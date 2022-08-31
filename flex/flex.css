@@ -6,6 +6,8 @@ body{background-image:linear-gradient(rgb(225, 220, 215), rgb(27, 16, 29))}
     justify-content: space-around;
     font-size: 30px;
     font-family: monospace;
+    background-image:linear-gradient(rgb(190, 173, 196), rgb(136, 112, 130));
+    border-radius:15px;
 }
 
 .shortbox{
