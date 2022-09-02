@@ -1,0 +1,13 @@
+.box{
+    display:flex;
+    justify-content:space-around;
+    align-content:space-around;
+    border-radius:1000px;
+    background-image: radial-gradient(rgb(255,80,80),rgb(255,0,0),rgb(125,0,0));
+    border-style:solid;
+    border-width: 40px;
+    border-color: rgb(150, 150, 160);
+    font-size: 125px;
+    text-align: center;
+    padding: 75px;
+}
