@@ -11,8 +11,8 @@ function console2(){
     console.log("L BOZO");
 }
 function changeBackground(){
-    document.body.style = flash;
+    document.body.classList.add("flash");
 }
 function changeButton(){
-    div.classList.replace("box", "box2");
+    document.div.classList.replace("box", "box2");
 }
