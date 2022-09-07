@@ -2,6 +2,6 @@ let poem = ["will you", "come closer", "my love?..", "youre fading,", "i can tel
 
 for(let x of poem){
     let par = document.createElement("p");
-    let line = document.createTextNode(poem[x]);
-    par.appendChild(line);
+    par.textContent=x;
+    document.querySelector("body").appendChild(par);
 }
