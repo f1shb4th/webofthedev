@@ -1,3 +1,5 @@
 .box{
     display:flex;
+    align-items: space-around;
+    border-color: black;
 }
