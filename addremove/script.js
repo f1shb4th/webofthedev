@@ -4,5 +4,6 @@ let froptionsEl = document.querySelector("#froptions");
 
 for (let el of frogList){
     let listFrog = document.createElement("li");
-    
+    listFrog.textContent=el;
+    optionsEl.appendChild(listFrog);
 }
