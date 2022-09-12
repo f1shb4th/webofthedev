@@ -20,8 +20,8 @@ let add = document.querySelector("#add");
 let remove = document.querySelector("#remove");
 
 function switchList(l1, l2){
-    
+
 }
 
-add.onClick = function() {};
-remove.onClick = () => {};
+add.onClick = function() {console.log("should add")};
+remove.onClick = () => {console.log("should remove")};
