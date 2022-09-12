@@ -1,4 +1,4 @@
-let frogList = ["red pumpkin toadlet","desert rain frog", "eastern leopard frog","fire bellied toad","purple harliquin toad","grey tree frog","fowler's toad","mexican burrowing toad",]
+let frogList = ["red pumpkin toadlet","desert rain frog", "eastern leopard frog","fire bellied toad","purple harliquin toad","grey tree frog","fowler's toad","mexican burrowing toad","ornate horned frog"]
 
 let froptionsEl = document.querySelector("#froptions");
 
