@@ -1,0 +1,79 @@
+body{background-image: conic-gradient(rgb(255, 0, 221),rgb(0,172,255),rgb(195, 0, 255),rgb(219,255,0),rgb(255, 119, 0),rgb(255,42,0),rgb(120,0,255));}
+h1{text-align: center;}
+h3{color:aquamarine;}
+td{font-size:500%;}
+
+/*link kerfufflery*/
+:link {color:rgb(127.5, 0, 255)}
+:visited {color:rgb(0,127.5,255)}
+
+/*dynamics*/
+p:hover{font-size:137%; color:rgb(0,255,0)}
+
+/*classes*/
+.rainbow {
+    animation-duration: 1s;
+    animation-name: rainbowaaa;
+    animation-iteration-count: infinite;
+}
+
+.fastRainbow{
+    animation-duration: .2s;
+    animation-name: rainbowbbb;
+    animation-iteration-count: infinite;
+}
+
+.eyesore{
+    animation-duration: .1s;
+    animation-name: blink182;
+    animation-iteration-count: infinite;
+}
+
+.eroseye{
+    animation-duration: .1s;
+    animation-name: knilb;
+    animation-iteration-count: infinite;
+}
+
+.small{font-size:50%;}
+
+.big{font-size:150%;}
+
+/*keyframes*/
+@keyframes rainbowaaa{
+    0%{color:rgb(255,0,0);font-size:95%}
+    8.3%{color:rgb(255,127.5,0)}
+    16.6%{color:rgb(255,255,0)}
+    24.9%{color:rgb(127.5,255,0)}
+    33.2%{color:rgb(0,255,0)}
+    41.5%{color:rgb(0,255,127.5)}
+    49.8%{color:rgb(0,255,255);font-size:105%}
+    58.1%{color:rgb(0,127.5,255)}
+    66.4%{color:rgb(0,0,255)}
+    74.7%{color:rgb(127.5,0,255)}
+    83%{color:rgb(255,0,255)}
+    91.3%{color:rgb(255,0,127.5)}
+    100%{color:rgb(255,0,3);font-size:95.257%}
+}
+
+@keyframes rainbowbbb{
+    0%{color:rgb(255,0,0);}
+    16.6%{color:rgb(255,255,0)}
+    33.2%{color:rgb(0,255,0)}
+    49.8%{color:rgb(0,255,255);}
+    66.4%{color:rgb(0,0,255)}
+    83%{color:rgb(255,0,255)}
+    100%{color:rgb(255,0,3);}
+}
+
+@keyframes blink182{
+    0%{color:rgb(0,255,0);font-family: monospace;}
+    50%{color:rgb(255,0,0);font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;}
+    100%{color:blue; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+}
+
+@keyframes knilb{
+    0%{color:cyan; font-family: 'Times New Roman', Times, serif;}
+    50%{color:magenta; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+    100%{color:yellow; font-family:cursive ;}
+}
