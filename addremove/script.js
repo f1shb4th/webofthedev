@@ -20,8 +20,11 @@ let add = document.querySelector("#add");
 let remove = document.querySelector("#remove");
 
 function toFroptions(index){
-    
+    chosenFrog.push(frogList[index]);
+    frogList.splice(index,0);
+    console.log(frogList);
+    console.log(chosenFrog);
 }
 
-add.onClick = () => {console.log("should add")};
+add.onClick = () => {toFroptions(1);};
 remove.onClick = () => {console.log("should remove")};
