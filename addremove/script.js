@@ -19,9 +19,9 @@ for (let el of chosenFrog){
 let add = document.querySelector("#add");
 let remove = document.querySelector("#remove");
 
-function switchList(l1, l2){
-
+function toFroptions(index){
+    
 }
 
-add.onClick = function() {console.log("should add")};
+add.onClick = () => {console.log("should add")};
 remove.onClick = () => {console.log("should remove")};
