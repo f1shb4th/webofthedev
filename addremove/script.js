@@ -10,21 +10,86 @@ for (let el of frogList){
     froptionsEl.appendChild(listFrog);
 }
 
-for (let el of chosenFrog){
+function addFrosen(el){
     let listFrog=document.createElement("li");
     listFrog.textContent=el;
     frosenEl.appendChild(listFrog);
+}
+
+for (let el of chosenFrog){
+    addFrosen(el);
 }
 
 let add = document.querySelector("#add");
 let remove = document.querySelector("#remove");
 
 function toFroptions(index){
+    addFrosen(index);
     chosenFrog.push(frogList[index]);
-    frogList.splice(index,0);
-    console.log(frogList);
-    console.log(chosenFrog);
+    frogList.splice(index,1);
 }
 
-add.onClick = () => {toFroptions(1);};
-remove.onClick = () => {console.log("should remove")};
+function toFrosen(index){
+  addFrosen(index);
+  frogList.push(chosenFrog[index]);
+  chosenFrog.splice(index,1);
+}
+
+let isSelected = [];
+
+for (let el of document.querySelectorAll("#froptions li")) {
+  isSelected.push(false);
+  el.onclick = () => {
+    let allFrogs = Array.from(document.querySelectorAll("#froptions li"));
+    let index = allFrogs.indexOf(el);
+    isSelected[index] = !isSelected[index];
+    if (isSelected[index]) {
+      el.style.backgroundColor = "red";
+    }
+    else {
+      el.style.backgroundColor = "";
+    }
+  };
+}
+
+let toUnselect = [];
+
+for (let el of document.querySelectorAll("#frosen li")) {
+  toUnselect.push(false);
+    el.onclick = () => {
+      console.log("fjrdufij")
+      let chosenFrogs = Array.from(document.querySelectorAll("#frosen li"));
+      let index = chosenFrogs.indexOf(el);
+      toUnselect[index] = !toUnselect[index];
+      if (toUnselect[index]) {
+        el.style.backgroundColor = "red";
+      }
+      else {
+        el.style.backgroundColor = "";
+      }
+    };
+  }
+
+add.onclick = () => {
+    let idx=0;
+    for(let el of isSelected){
+        if(el==true){
+            funny=frogList[idx];
+            toFroptions(funny);
+            idx--
+        }
+        idx++
+    }
+};
+
+remove.onclick = () => {
+    let idx=0;
+    for(let el of toUnselect){
+        if(el==true){
+            silly=chosenFrog[idx];
+            toFrosen(silly);
+            idx--
+        }
+        idx++
+    }
+};
