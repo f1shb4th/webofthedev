@@ -10,10 +10,24 @@ for (let el of frogList){
     froptionsEl.appendChild(listFrog);
 }
 
+let toUnselect = [];
+
 function addFrosen(el){
     let listFrog=document.createElement("li");
     listFrog.textContent=el;
     frosenEl.appendChild(listFrog);
+    el.onclick = () => {
+      console.log("fjrdufij")
+      let chosenFrogs = Array.from(document.querySelectorAll("#frosen li"));
+      let index = chosenFrogs.indexOf(el);
+      toUnselect[index] = !toUnselect[index];
+      if (toUnselect[index]) {
+        el.style.backgroundColor = "red";
+      }
+      else {
+        el.style.backgroundColor = "";
+      }
+    };
 }
 
 for (let el of chosenFrog){
@@ -51,24 +65,6 @@ for (let el of document.querySelectorAll("#froptions li")) {
     }
   };
 }
-
-let toUnselect = [];
-
-for (let el of document.querySelectorAll("#frosen li")) {
-  toUnselect.push(false);
-    el.onclick = () => {
-      console.log("fjrdufij")
-      let chosenFrogs = Array.from(document.querySelectorAll("#frosen li"));
-      let index = chosenFrogs.indexOf(el);
-      toUnselect[index] = !toUnselect[index];
-      if (toUnselect[index]) {
-        el.style.backgroundColor = "red";
-      }
-      else {
-        el.style.backgroundColor = "";
-      }
-    };
-  }
 
 add.onclick = () => {
     let idx=0;
