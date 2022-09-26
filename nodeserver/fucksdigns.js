@@ -22,6 +22,7 @@ function htmlE(res){
     res.end();}
 
 app.get('/',(req,res)=>{
+people.push({fN:req.body.firstName, lN:req.body.lastName})
     console.log(req.query);
     htmlS(res);
     res.write(`
