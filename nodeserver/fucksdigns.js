@@ -51,5 +51,5 @@ people.push({fN:req.query.firstName, lN:req.query.lastName})
 })
 
 app.listen(port,()=>{
-    console.log(`piss your pants die die die die die on port${port}`)
+    console.log(`piss your pants and die on port${port}`)
 })
