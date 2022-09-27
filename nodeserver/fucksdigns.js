@@ -29,6 +29,11 @@ function htmlE(res){
 
 let people = []
 
+app.get('/person/:fun',(req,res)=>{
+    console.log(req.params);
+    res.send("FRIJDSUNVNDFSK DIE" +res.params.fun);
+});
+
 app.get('/',(req,res)=>{
 people.push({fN:req.query.firstName, lN:req.query.lastName})
     console.log(req.query);
