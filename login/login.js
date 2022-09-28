@@ -8,6 +8,3 @@ app.use(express.static('public'));
 app.listen(port,()=>{
     console.log(`piss your pants and die on port${port}`)
 })
-
-let login = document.querySelector("#login");
-let register = document.querySelector("#register");
