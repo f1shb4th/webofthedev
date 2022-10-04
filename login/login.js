@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const e = require('express');
 const app = express();
 const port = 3000;
 
@@ -17,16 +18,24 @@ app.post("/register",(req,res)=>{
 })
 
 app.post("/login",(req,res)=>{
+    console.log(peeble);
     for (let i = 0; i < peeble.length; i++) {
         if(peeble[i].userName===req.body.userName){
             if(peeble[i].password===req.body.password){
                 res.redirect('/superSecretSite.html');
-            };
+                return;
+            } 
         };
-      }
+    };
+    res.redirect('/register.html');
     console.log("old dude");
 })
 
+// let logout = document.querySelector("#logout");
+
+// logout.onclick = () => {
+//     res.redirect('/index.html');
+// };
 
 
 app.listen(port,()=>{
