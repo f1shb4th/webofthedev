@@ -9,6 +9,8 @@ app.use(express.static('public'));
 
 let peeble=[]
 
+let currentUser=[]
+
 app.post("/register",(req,res)=>{
     console.log(req.body);
     peeble.push({userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password})
@@ -23,19 +25,15 @@ app.post("/login",(req,res)=>{
         if(peeble[i].userName===req.body.userName){
             if(peeble[i].password===req.body.password){
                 res.redirect('/superSecretSite.html');
+                currentUser.push(peeble[i]);
+                console.log(currentUser)
                 return;
             } 
         };
     };
-    res.redirect('/register.html');
     console.log("old dude");
 })
 
-// let logout = document.querySelector("#logout");
-
-// logout.onclick = () => {
-//     res.redirect('/index.html');
-// };
 
 
 app.listen(port,()=>{
