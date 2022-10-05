@@ -9,13 +9,13 @@ app.use(express.static('public'));
 
 let peeble=[]
 
-let currentUser=[]
+let currentUser;
 
 app.post("/register",(req,res)=>{
-    console.log(req.body);
     peeble.push({userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password})
+    currentUser = {userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password};
+    console.log(currentUser)
     console.log(peeble);
-    console.log("new dude");
     res.redirect('/superSecretSite.html');
 })
 
@@ -25,13 +25,17 @@ app.post("/login",(req,res)=>{
         if(peeble[i].userName===req.body.userName){
             if(peeble[i].password===req.body.password){
                 res.redirect('/superSecretSite.html');
-                currentUser.push(peeble[i]);
+                currentUser = peeble[i];
                 console.log(currentUser)
                 return;
             } 
         };
     };
-    console.log("old dude");
+})
+
+app.get("/logout",(req,res)=>{
+    currentUser=undefined;
+    res.redirect('/index.html');
 })
 
 

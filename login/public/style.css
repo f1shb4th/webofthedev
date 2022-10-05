@@ -1,5 +1,19 @@
 body{
     background-color: rgb(212, 231, 185);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgb(0, 100, 100)
+    color: rgb(0, 100, 100);
 }
+
+h1{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    color:rgb(70, 40, 158);
+}
+
+button {
+    background-color: #759c76;
+}
+
+:link {color:rgb(1, 172, 78)}
+:visited {color:rgb(19, 107, 5)}
