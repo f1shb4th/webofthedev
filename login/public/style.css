@@ -15,5 +15,14 @@ button {
     background-color: #759c76;
 }
 
+input{
+    align-items: center;
+    width: 400px;
+}
+
+input[type=submit]{
+    background-color: #759c76;
+}
+
 :link {color:rgb(1, 172, 78)}
 :visited {color:rgb(19, 107, 5)}
