@@ -11,7 +11,7 @@ app.use("/superSecretSite.html",(req,res,next)=>{
         next();
     }
     else{
-        res.redirect("/login.html")
+        res.redirect("/suffer.html")
     }
 })
 
