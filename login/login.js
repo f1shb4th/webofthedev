@@ -1,14 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const e = require('express');
+const session = require('express-session')
 const app = express();
 const port = 3000;
+
+app.use(session({
+    secret: 'real big frog',
+    resave: false,
+    saveUninitialized: true,
+    cookie:{secure:true}
+}))
 
 app.use(express.urlencoded({extended:false}))
 
 app.use("/superSecretSite.html",(req,res,next)=>{
-    if(currentUser){
-        next();
+    if(req.session.currentUser){
+        next()
     }
     else{
         res.redirect("/suffer.html")
@@ -19,10 +27,7 @@ app.use(express.static('public'));
 
 let peeble=[]
 
-let currentUser;
-
 app.use((req,res,next)=>{
-    console.log(currentUser);
     next();
 })
 
@@ -51,8 +56,8 @@ app.post("/register",(req,res)=>{
         }
     }
     peeble.push({userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password})
-    currentUser = {userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password};
-    console.log(currentUser);
+    req.session.currentUser = {userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password};
+    console.log(req.session.currentUser);
     console.log(peeble);
     res.redirect('/superSecretSite.html');
 })
@@ -63,8 +68,8 @@ app.post("/login",(req,res)=>{
         if(peeble[i].userName===req.body.userName){
             if(peeble[i].password===req.body.password){
                 res.redirect('/superSecretSite.html');
-                currentUser = peeble[i];
-                console.log(currentUser)
+                req.session.currentUser = peeble[i];
+                console.log(req.session.currentUser)
                 return;
             } 
         };
@@ -72,7 +77,7 @@ app.post("/login",(req,res)=>{
 })
 
 app.get("/logout",(req,res)=>{
-    currentUser=undefined;
+    req.session.currentUser=undefined;
     res.redirect('/index.html');
 })
 
