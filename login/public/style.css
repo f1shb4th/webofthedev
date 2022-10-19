@@ -18,11 +18,29 @@ button {
 input{
     align-items: center;
     width: 400px;
+    height:30px;
+    border-radius:5px;
+    font-size:24px;
+    padding: 2px;
+    margin:3px;
 }
 
 input[type=submit]{
+    width:408px;
+    height: 25px;
     background-color: #759c76;
+    border-radius:15px;
+    font-size:12px;
 }
 
 :link {color:rgb(1, 172, 78)}
 :visited {color:rgb(19, 107, 5)}
+
+.post{
+    display:flex;
+    width:300px;
+}
+
+.postForm{
+    align-items: center;
+}

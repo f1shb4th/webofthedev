@@ -5,31 +5,36 @@ const session = require('express-session')
 const app = express();
 const port = 3000;
 
+
 app.use(session({
     secret: 'real big frog',
     resave: false,
     saveUninitialized: true,
-    cookie:{secure:true}
+    cookie:{secure:false}
 }))
 
 app.use(express.urlencoded({extended:false}))
 
 app.use("/superSecretSite.html",(req,res,next)=>{
+    console.log(req.session)
     if(req.session.currentUser){
         next()
     }
     else{
+        console.log("no user ):")
         res.redirect("/suffer.html")
     }
 })
 
 app.use(express.static('public'));
-
-let peeble=[]
-
 app.use((req,res,next)=>{
     next();
 })
+
+
+let peeble=[]
+let posts = []
+
 
 function htmlS(res){
     res.write(`<!DOCTYPE html>
@@ -41,10 +46,12 @@ function htmlS(res){
         <title>Document</title>
     </head>
     <body>`);}
+
 function htmlE(res){
     res.write(`</body>
     </html>`);
     res.end();}
+
 
 app.post("/register",(req,res)=>{
     for(let i=0;i<peeble.length;i++){
@@ -57,6 +64,7 @@ app.post("/register",(req,res)=>{
     }
     peeble.push({userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password})
     req.session.currentUser = {userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password};
+    console.log("string and currentuser")
     console.log(req.session.currentUser);
     console.log(peeble);
     res.redirect('/superSecretSite.html');
@@ -76,11 +84,15 @@ app.post("/login",(req,res)=>{
     };
 })
 
+app.(helpme)("/post",(req,res)=>{
+    posts.push({title:req.body.postTitle,data:req.body.postData})
+})
+
+
 app.get("/logout",(req,res)=>{
     req.session.currentUser=undefined;
     res.redirect('/index.html');
 })
-
 
 
 app.listen(port,()=>{
