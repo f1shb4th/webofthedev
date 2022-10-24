@@ -52,6 +52,12 @@ function htmlE(res){
     </html>`);
     res.end();}
 
+function idefk(res){
+    for (let el of posts){
+        
+    }
+}
+
 
 app.post("/register",(req,res)=>{
     for(let i=0;i<peeble.length;i++){
@@ -87,6 +93,23 @@ app.post("/login",(req,res)=>{
 app.post("/post",(req,res)=>{
     posts.push({title:req.body.postTitle,data:req.body.postData})
     console.log(posts);
+    htmlS(res);
+    res.write(`<h1>hey.</h1>
+    <p>suffer.</p>
+    <form class="postForm" method="post" action="/post">
+        <div>
+            <input placeholder="hey." type="text" name="postTitle" id="pname">
+        </div>
+        <div>
+            <input placeholder="whats goin on?" type="text" name="postData" id="pdata">
+        </div>
+        <div>
+            <input type="submit" value="submit">
+        </div>
+    </form>`)
+    //prob a function !?!?!??!?!?!
+    res.write(`<a href="logout"><button>i want to leave</button></a>`)
+    htmlE(res);
 })
 
 
