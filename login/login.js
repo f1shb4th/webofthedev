@@ -84,8 +84,9 @@ app.post("/login",(req,res)=>{
     };
 })
 
-app.(helpme)("/post",(req,res)=>{
+app.post("/post",(req,res)=>{
     posts.push({title:req.body.postTitle,data:req.body.postData})
+    console.log(posts);
 })
 
 
