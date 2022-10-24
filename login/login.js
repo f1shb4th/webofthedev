@@ -36,14 +36,15 @@ let peeble=[]
 let posts = []
 
 
-function htmlS(res){
+function htmlS(res, pageName){
     res.write(`<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>`,pageName,`</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>`);}
 
@@ -62,7 +63,7 @@ function idefk(res){
 app.post("/register",(req,res)=>{
     for(let i=0;i<peeble.length;i++){
         if(peeble[i].userName===req.body.userName||peeble[i].email===req.body.email){
-        htmlS(res);
+        htmlS(res,'username/email already taken');
         res.write('<p>no</p>')
         htmlE(res);
         return;
@@ -93,7 +94,7 @@ app.post("/login",(req,res)=>{
 app.post("/post",(req,res)=>{
     posts.push({title:req.body.postTitle,data:req.body.postData})
     console.log(posts);
-    htmlS(res);
+    htmlS(res,'shhh');
     res.write(`<h1>hey.</h1>
     <p>suffer.</p>
     <form class="postForm" method="post" action="/post">
