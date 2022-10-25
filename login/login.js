@@ -33,8 +33,9 @@ app.use((req,res,next)=>{
 })
 
 
-let peeble=[]
 let posts = []
+let peebleSave = fs.readFileSync('peeble.json', {encoding: "utf-8"});
+let peeble = JSON.parse(peebleSave);
 
 
 function htmlS(res, pageName){
@@ -86,15 +87,34 @@ app.post("/login",(req,res)=>{
         if(peeble[i].userName===req.body.userName){
             if(peeble[i].password===req.body.password){
                 res.redirect('/posts');
+                console.log("found somebody :3");
                 req.session.currentUser = peeble[i];
-                console.log(req.session.currentUser)
+                console.log(req.session.currentUser);
+                console.log(req.session);
                 return;
             } 
         };
     };
+    htmlS(res, 'wb');
+    res.write(`<form method="POST" action="/login">
+    <div>
+        <input placeholder="the name of your user" type="text" name="userName" id="uname">
+    </div>
+    <div>
+        <input placeholder="word of passing" type="password" name="password" id="pword">
+    </div>
+    <p style="color:rgb(255, 0, 0);">You fucked it up. Try again.</p>
+    <div>
+        <input type="submit" value="submit">
+    </div>
+</form>
+<a href="forgor.html">forgor your password?</a>
+<a href="register.html">remembered your a dumbass with no account?</a>`)
+    htmlE(res);
 })
 
 app.post("/post",(req,res)=>{
+    console.log(req.session);
     posts.unshift({data:req.body.postData, creator:req.session.currentUser.userName, date:(new Date()).toLocaleDateString(), time:(new Date()).toLocaleTimeString()})
     console.log(posts);
     res.redirect("/posts")
@@ -123,6 +143,7 @@ app.get("/posts",(req,res)=>{
 })
 
 app.get("/logout",(req,res)=>{
+    console.log("loggin da hek out!!!1!!1!111!1!");
     req.session.currentUser=undefined;
     res.redirect('/index.html');
 })
