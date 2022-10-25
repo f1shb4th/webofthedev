@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const e = require('express');
 const session = require('express-session')
+const fs = require('fs');
 const app = express();
 const port = 3000;
 
@@ -43,7 +44,7 @@ function htmlS(res, pageName){
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>`,pageName,`</title>
+        <title> ${pageName} </title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>`);}
@@ -70,11 +71,13 @@ app.post("/register",(req,res)=>{
         }
     }
     peeble.push({userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password})
+    let peebleString = JSON.stringify(peeble);
+    fs.writeFileSync("peeble.json", peebleString);
     req.session.currentUser = {userName:req.body.userName, firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password};
     console.log("string and currentuser")
     console.log(req.session.currentUser);
     console.log(peeble);
-    res.redirect('/superSecretSite.html');
+    res.redirect('/posts');
 })
 
 app.post("/login",(req,res)=>{
@@ -82,7 +85,7 @@ app.post("/login",(req,res)=>{
     for (let i = 0; i < peeble.length; i++) {
         if(peeble[i].userName===req.body.userName){
             if(peeble[i].password===req.body.password){
-                res.redirect('/superSecretSite.html');
+                res.redirect('/posts');
                 req.session.currentUser = peeble[i];
                 console.log(req.session.currentUser)
                 return;
@@ -92,15 +95,17 @@ app.post("/login",(req,res)=>{
 })
 
 app.post("/post",(req,res)=>{
-    posts.push({title:req.body.postTitle,data:req.body.postData})
+    posts.unshift({data:req.body.postData, creator:req.session.currentUser.userName, date:(new Date()).toLocaleDateString(), time:(new Date()).toLocaleTimeString()})
     console.log(posts);
-    htmlS(res,'shhh');
+    res.redirect("/posts")
+})
+
+
+app.get("/posts",(req,res)=>{
+    htmlS(res,'shhhh');
     res.write(`<h1>hey.</h1>
     <p>suffer.</p>
     <form class="postForm" method="post" action="/post">
-        <div>
-            <input placeholder="hey." type="text" name="postTitle" id="pname">
-        </div>
         <div>
             <input placeholder="whats goin on?" type="text" name="postData" id="pdata">
         </div>
@@ -108,11 +113,14 @@ app.post("/post",(req,res)=>{
             <input type="submit" value="submit">
         </div>
     </form>`)
-    //prob a function !?!?!??!?!?!
+    for(let post of posts){
+        res.write(`<h4>${post.creator}</h4>
+                   <p>${post.data}</p>
+                   <h6>${post.date} ${post.time}</h6>`)
+    }
     res.write(`<a href="logout"><button>i want to leave</button></a>`)
     htmlE(res);
 })
-
 
 app.get("/logout",(req,res)=>{
     req.session.currentUser=undefined;
