@@ -65,8 +65,29 @@ function idefk(res){
 app.post("/register",(req,res)=>{
     for(let i=0;i<peeble.length;i++){
         if(peeble[i].userName===req.body.userName||peeble[i].email===req.body.email){
-        htmlS(res,'username/email already taken');
-        res.write('<p>no</p>')
+        htmlS(res,'haiii');
+        res.write(`<form method="post" action="/register">
+        <div>
+            <input placeholder="the name of your user" type="text" name="userName" id="uname">
+        </div>
+        <div>   
+            <input placeholder="your name" type="text" name="firstName" id="fname">
+        </div>
+        <div>
+            <input placeholder="your name but like the second part" type="text" name="lastName" id="lname">
+        </div>
+        <div>
+            <input placeholder="electronic mailing adress" type="email" name="email" id="email">
+        </div>
+        <div>
+            <input placeholder="word of passing" type="password" name="password" id="pword">
+        </div>
+        <p style="color:rgb(255, 0, 0);">Username or eMail already taken!</p>
+        <div>
+            <input type="submit" value="submit">
+        </div>
+    </form>
+    <a href="login.html">akshully i have an account i just rembered</a>`)
         htmlE(res);
         return;
         }
@@ -103,7 +124,7 @@ app.post("/login",(req,res)=>{
     <div>
         <input placeholder="word of passing" type="password" name="password" id="pword">
     </div>
-    <p style="color:rgb(255, 0, 0);">You fucked it up. Try again.</p>
+    <p style="color:rgb(255, 0, 0);">Incorrect username/password.</p>
     <div>
         <input type="submit" value="submit">
     </div>
