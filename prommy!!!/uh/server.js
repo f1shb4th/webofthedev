@@ -20,6 +20,20 @@ function htmlE(res){
     </html>`);
     res.end();}
 
+
+app.get('/',(req,res)=>{
+    htmlS(res, 'idk');
+    res.write(`<h1> cool page </h1>`)
+    fetch('https://rickandmortyapi.com/api/character').then(fRes=>{
+        console.log(fRes);
+    }).then(data=>{
+        for(let person of data.results){
+            res.write(`<h1>${person.name}</h1>`)
+        }
+        console.log(data);
+    })
+})
+
 app.listen(port,()=>{
     console.log(`piss your pants and die on port${port}`)
 })
