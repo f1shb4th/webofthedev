@@ -20,7 +20,9 @@ function htmlE(res){
     </html>`);
     res.end();}
 
-
+app.get('/frogs', (req, res)=>{
+    res.json({name:"breviceps macrops",shape:"round"})
+});
 /*
 scientific suborder
 common suborder
@@ -35,7 +37,6 @@ size
 iucn redlist status
 morphs ???
 */
-
 
 app.listen(port,()=>{
     console.log(`piss your pants and die on port${port}`)
