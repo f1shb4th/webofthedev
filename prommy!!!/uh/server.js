@@ -21,18 +21,45 @@ function htmlE(res){
     res.end();}
 
 
-app.get('/',(req,res)=>{
+// app.get('/',(req,res)=>{
+//     htmlS(res, 'idk');
+//     res.write(`<h1> cool page </h1>`)
+//     fetch('https://rickandmortyapi.com/api/character').then(fRes=>{
+//         console.log(fRes);
+//         return fRes.json();
+//     }).then(data=>{
+//         for(let person of data.results){
+//             res.write(`<h1>${person.name}</h1>`)
+//             for (let GDHUSJB of person.episode){
+//                 fetch(GDHUSJB).then(r=>{
+//                     return r.json();
+//                 }).then(episode=>{
+//                     res.write(`<p>${episode.name}</p>`)
+//                 })
+//             }
+//         }
+//         console.log(data);
+//     })
+// })
+app.get('/',async(req,res)=>{
     htmlS(res, 'idk');
     res.write(`<h1> cool page </h1>`)
-    fetch('https://rickandmortyapi.com/api/character').then(fRes=>{
+    let data = await fetch('https://rickandmortyapi.com/api/character').then(fRes=>{
         console.log(fRes);
         return fRes.json();
-    }).then(data=>{
+    });
+    
         for(let person of data.results){
-            res.write(`<h1>${person.name},${person.status}</h1>`)
+            res.write(`<h1>${person.name}</h1>`)
+            for (let GDHUSJB of person.episode){
+                let episode = await fetch(GDHUSJB).then(r=>{
+                    return r.json();
+                })
+
+                    res.write(`<p>${episode.name}</p>`)
+            }
         }
         console.log(data);
-    })
 })
 
 app.listen(port,()=>{
