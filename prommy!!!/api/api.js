@@ -20,6 +20,23 @@ function htmlE(res){
     </html>`);
     res.end();}
 
+
+/*
+scientific suborder
+common suborder
+scientific family
+common family
+scientific genus
+common genus
+scientific name
+common name(s)
+locale
+size
+iucn redlist status
+morphs ???
+*/
+
+
 app.listen(port,()=>{
     console.log(`piss your pants and die on port${port}`)
 })
