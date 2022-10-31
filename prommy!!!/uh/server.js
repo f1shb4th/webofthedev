@@ -26,9 +26,10 @@ app.get('/',(req,res)=>{
     res.write(`<h1> cool page </h1>`)
     fetch('https://rickandmortyapi.com/api/character').then(fRes=>{
         console.log(fRes);
+        return fRes.json();
     }).then(data=>{
         for(let person of data.results){
-            res.write(`<h1>${person.name},${status}</h1>`)
+            res.write(`<h1>${person.name},${person.status}</h1>`)
         }
         console.log(data);
     })
