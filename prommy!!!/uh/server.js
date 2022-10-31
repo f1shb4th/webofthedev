@@ -28,7 +28,7 @@ app.get('/',(req,res)=>{
         console.log(fRes);
     }).then(data=>{
         for(let person of data.results){
-            res.write(`<h1>${person.name}</h1>`)
+            res.write(`<h1>${person.name},${status}</h1>`)
         }
         console.log(data);
     })
