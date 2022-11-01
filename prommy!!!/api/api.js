@@ -74,6 +74,30 @@ let frogs = [
     scientificname:"Bombina maxima", commonname:"Large-webbed bell toad",
     locale:"China", size:"44-51", iucn:"LC"
     },
+    {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
+    scientificfamily:"Bombinatoridae", commonfamily:"Fire-bellied toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+    {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
+    scientificfamily:"Bombinatoridae", commonfamily:"Fire-bellied toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+    {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
+    scientificfamily:"Bombinatoridae", commonfamily:"Fire-bellied toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+    {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
+    scientificfamily:"Bombinatoridae", commonfamily:"Fire-bellied toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
 
 
 
@@ -82,6 +106,12 @@ let frogs = [
     scientificgenus:"Leiopelma", commongenus:"New Zealand primitive frogs",
     scientificname:"Leiopelma archeyi", commonname:"Archey's frog",
     locale:"New Zealand", size:"31-37mm", iucn:"CR"
+    },
+    {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
+    scientificfamily:"Leiopelmatidae", commonfamily:"New Zealand frogs",
+    scientificgenus:"Leiopelma", commongenus:"New Zealand primitive frogs",
+    scientificname:"Leiopelma hamiltoni", commonname:"Hamilton's frog",
+    locale:"New Zealand", size:"43-49mm", iucn:"VU"
     },
     {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
     scientificfamily:"Leiopelmatidae", commonfamily:"New Zealand frogs",
@@ -98,6 +128,30 @@ let frogs = [
 
 
     
+    {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
+    scientificfamily:"Alytidae ", commonfamily:"Painted frogs, midwife toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+    {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
+    scientificfamily:"Alytidae ", commonfamily:"Painted frogs, midwife toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+    {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
+    scientificfamily:"Alytidae ", commonfamily:"Painted frogs, midwife toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+    {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
+    scientificfamily:"Alytidae ", commonfamily:"Painted frogs, midwife toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
     {scientificsuborder:"Archaeobatrachia", commonsuborder:"Primitive frogs",
     scientificfamily:"Alytidae ", commonfamily:"Painted frogs, midwife toads",
     scientificgenus:"", commongenus:"",
