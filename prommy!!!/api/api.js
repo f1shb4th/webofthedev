@@ -204,24 +204,74 @@ let frogs = [
     scientificname:"Latona nigrivevnter", commonname:"Hula painted frog",
     locale:"Israel", size:"119mm-127mm", iucn:"CR"
     },
+
+
+
+
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Pelobatidae", commonfamily:"European spadefoot toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Pelodytidae", commonfamily:"Parsley frogs",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Pipidae", commonfamily:"Tongueless frogs",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Rhinophrynidae", commonfamily:"Mexican burrowing frogs",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Scaphiopodidae", commonfamily:"American spadefoot toads",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
 ]
 
 app.get('/frogs', (req, res)=>{
     res.json(frogs)
 });
 /*
-scientific suborder
-common suborder
-scientific family
-common family
-scientific genus
-common genus
-scientific name
-common name(s)
-locale
-size
-iucn redlist status
-morphs ???
+    {scientificsuborder:"", commonsuborder:"",
+    scientificfamily:"", commonfamily:"",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
 */
 
 app.listen(port,()=>{
