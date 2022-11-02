@@ -248,7 +248,7 @@ let frogs = [
     {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
     scientificfamily:"Rhinophrynidae", commonfamily:"Mexican burrowing frogs",
     scientificgenus:"", commongenus:"",
-    scientificname:"", commonname:"",
+    scientificname:"", commonname:"Mexican burrowing frog",
     locale:"", size:"", iucn:""
     },
 
@@ -265,6 +265,69 @@ let frogs = [
 app.get('/frogs', (req, res)=>{
     res.json(frogs)
 });
+
+app.get('/suborders', (req,res)=>{
+    const suborders = new Set();
+    for(let frog of frogs){
+        console.log(frog);
+        suborders.add(frog.scientificsuborder);
+    }
+    console.log(suborders);
+    res.json([...suborders]);
+});
+
+app.get('/:suborder', (req, res)=>{
+    const families = new Set();
+    for(let frog of frogs){
+        if(frog.scientificsuborder===req.params.suborder){
+            families.add(frog.scientificfamily);
+        }
+    }
+    res.json([...families]);
+});
+
+app.get('/:suborder/:family', (req, res)=>{
+    const genus = new Set();
+    for(let frog of frogs){
+        if(frog.scientificsuborder===req.params.suborder){
+            if(frog.scientificfamily===req.params.family){
+                genus.add(frog.scientificgenus);
+            }
+        }
+    }
+    res.json([...genus]);
+});
+
+app.get('/:suborder/:family/:genus', (req, res)=>{
+    const species = new Set();
+    for(let frog of frogs){
+        if(frog.scientificsuborder===req.params.suborder){
+            if(frog.scientificfamily===req.params.family){
+                if(frog.scientificgenus===req.params.genus){
+                    species.add(frog.scientificname);
+                }
+            }
+        }
+    }
+    res.json([...species]);
+});
+
+app.get('/:suborder/:family/:genus/:species', (req, res)=>{
+    const frogInfo = new Set();
+    for(let frog of frogs){
+        if(frog.scientificsuborder===req.params.suborder){
+            if(frog.scientificfamily===req.params.family){
+                if(frog.scientificgenus===req.params.genus){
+                    if(frog.scientificname===req.params.species){
+                        frogInfo.add(frog);
+                    }
+                }
+            }
+        }
+    }
+    res.json([...frogInfo]);
+});
+
 /*
     {scientificsuborder:"", commonsuborder:"",
     scientificfamily:"", commonfamily:"",
