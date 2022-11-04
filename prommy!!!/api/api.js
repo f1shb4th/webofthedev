@@ -1,4 +1,6 @@
+const e = require('express');
 const express = require('express');
+const { restart } = require('nodemon');
 const app = express();
 const port = 6969;
 
@@ -211,6 +213,83 @@ let frogs = [
 
     {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
     scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"Leptobrachella", commongenus:"Dwarf litter frogs",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"Leptobrachium", commongenus:"Eastern spadefoot toads",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"Leptolalax", commongenus:"Asian toads",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"Oreolalax", commongenus:"Lazy toads",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"Scutiger", commongenus:"Cat-eyed toads",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"Atympanophrys", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+
+    {scientificsuborder:"Mesobatrachia", commonsuborder:"Middle frogs",
+    scientificfamily:"Megophyridae", commonfamily:"Leaf litter frogs",
     scientificgenus:"", commongenus:"",
     scientificname:"", commonname:"",
     locale:"", size:"", iucn:""
@@ -262,6 +341,16 @@ let frogs = [
     },
 ]
 
+
+/*
+    {scientificsuborder:"", commonsuborder:"",
+    scientificfamily:"", commonfamily:"",
+    scientificgenus:"", commongenus:"",
+    scientificname:"", commonname:"",
+    locale:"", size:"", iucn:""
+    },
+*/
+
 app.get('/frogs', (req, res)=>{
     res.json(frogs)
 });
@@ -282,6 +371,9 @@ app.get('/:suborder', (req, res)=>{
         if(frog.scientificsuborder===req.params.suborder){
             families.add(frog.scientificfamily);
         }
+        else if(frog.commonsuborder===req.params.suborder){
+            res.redirect(`/${frog.scientificsuborder}`)
+        }
     }
     res.json([...families]);
 });
@@ -292,6 +384,17 @@ app.get('/:suborder/:family', (req, res)=>{
         if(frog.scientificsuborder===req.params.suborder){
             if(frog.scientificfamily===req.params.family){
                 genus.add(frog.scientificgenus);
+            }
+            else if(frog.commonfamily===req.params.family){
+                res.redirect(`/${req.params.suborder}/${frog.scientificfamily}`)
+            }
+        }
+        else if(frog.commonsuborder===req.params.suborder){
+            if(frog.scientificfamily===req.params.family){
+                res.redirect(`/${frog.scientificsuborder}/${req.params.family}`)
+            }
+            else if(frog.commonfamily===req.params.family){
+                res.redirect(`/${frog.scientificsuborder}/${frog.scientificfamily}`)
             }
         }
     }
@@ -305,6 +408,35 @@ app.get('/:suborder/:family/:genus', (req, res)=>{
             if(frog.scientificfamily===req.params.family){
                 if(frog.scientificgenus===req.params.genus){
                     species.add(frog.scientificname);
+                }
+                else if(frog.commongenus===req.params.genus){
+                    res.redirect(`/${req.params.suborder}/${req.params.family}/${frog.scientificgenus}`)
+                }
+            }
+            else if(frog.commonfamily===req.params.family){
+                if(frog.scientificgenus===req.params.genus){
+                    res.redirect(`/${req.params.suborder}/${frog.scientificfamily}/${req.params.genus}`)
+                }
+                else if(frog.commongenus===req.params.genus){
+                    res.redirect(`/${req.params.suborder}/${frog.scientificfamily}/${frog.scientificgenus}`)
+                }
+            }
+        }
+        else if(frog.commonsuborder===req.params.suborder){
+            if(frog.scientificfamily===req.params.family){
+                if(frog.scientificgenus===req.params.genus){
+                    res.redirect(`/${frog.scientificsuborder}/${req.params.family}/${req.params.genus}`)
+                }
+                else if(frog.commongenus===req.params.genus){
+                    res.redirect(`/${frog.scientificsuborder}/${req.params.family}/${frog.scientificgenus}`)
+                }
+            }
+            else if(frog.commonfamily===req.params.family){
+                if(frog.scientificgenus===req.params.genus){
+                    res.redirect(`/${frog.scientificsuborder}/${frog.scientificfamily}/${req.params.genus}`)
+                }
+                else if(frog.commongenus===req.params.genus){
+                    res.redirect(`/${frog.scientificsuborder}/${frog.scientificfamily}/${frog.scientificgenus}`)
                 }
             }
         }
@@ -321,6 +453,73 @@ app.get('/:suborder/:family/:genus/:species', (req, res)=>{
                     if(frog.scientificname===req.params.species){
                         frogInfo.add(frog);
                     }
+                    else if(frog.commonname===req.params.species){
+                        res.redirect(`/${req.params.suborder}/${req.params.family}/${req.params.genus}/${frog.scientificname}`)
+                    }
+                }
+                else if(frog.commongenus===req.params.genus){
+                    if(frog.scientificname===req.params.species){
+                        res.redirect(`/${req.params.suborder}/${req.params.family}/${frog.scientificgenus}/${req.params.species}`)
+                    }
+                    else if(frog.commonname===req.params.species){
+                        res.redirect(`/${req.params.suborder}/${req.params.family}/${frog.scientificgenus}/${frog.scientificname}`)
+                    }
+                }
+            }
+            else if(frog.commonfamily===req.params.family){
+                if(frog.scientificgenus===req.params.genus){
+                    if(frog.scientificname===req.params.species){
+                        res.redirect(`/${req.params.suborder}/${frog.scientificfamily}/${req.params.genus}/${req.params.species}`)
+                    }
+                    else if(frog.commonname===req.params.species){
+                        res.redirect(`/${req.params.suborder}/${frog.scientificfamily}/${req.params.genus}/${frog.scientificname}`)
+                    }
+                }
+            }  
+                else if(frog.commongenus===req.params.genus){
+                    if(frog.scientificname===req.params.species){
+                        res.redirect(`/${req.params.suborder}/${frog.scientificfamily}/${frog.scientificgenus}/${req.params.species}`)
+                    }
+                    else if(frog.commonname===req.params.species){
+                        res.redirect(`/${req.params.suborder}/${frog.scientificfamily}/${frog.scientificgenus}/${frog.scientificname}`)
+                    }
+                }
+            }
+        else if(frog.commonsuborder===req.params.suborder){
+            if(frog.scientificfamily===req.params.family){
+                if(frog.scientificgenus===req.params.genus){
+                    if(frog.scientificname===req.params.species){
+                        res.redirect(`/${frog.scientificsuborder}/${req.params.family}/${req.params.genus}/${req.params.species}`)
+                    }
+                    else if(frog.commonname===req.params.species){
+                        res.redirect(`/${frog.scientificsuborder}/${req.params.family}/${req.params.genus}/${frog.scientificname}`)
+                    }
+                }
+                else if(frog.commongenus===req.params.genus){
+                    if(frog.scientificname===req.params.species){
+                        res.redirect(`/${frog.scientificsuborder}/${req.params.family}/${frog.scientificgenus}/${req.params.species}`)
+                    }
+                    else if(frog.commonname===req.params.species){
+                        res.redirect(`/${frog.scientificsuborder}/${req.params.family}/${frog.scientificgenus}/${frog.scientificname}`)
+                    }
+                }
+            }
+            else if(frog.commonfamily===req.params.family){
+                if(frog.scientificgenus===req.params.genus){
+                    if(frog.scientificname===req.params.species){
+                        res.redirect(`/${frog.scientificsuborder}/${frog.scientificfamily}/${req.params.genus}/${req.params.species}`)
+                    }
+                    else if(frog.commonname===req.params.species){
+                        res.redirect(`/${frog.scientificsuborder}/${frog.scientificfamily}/${req.params.genus}/${frog.scientificname}`)
+                    }
+                }
+                else if(frog.commongenus===req.params.genus){
+                    if(frog.scientificname===req.params.species){
+                        res.redirect(`/${frog.scientificsuborder}/${frog.scientificfamily}/${frog.scientificgenus}/${req.params.species}`)
+                    }
+                    else if(frog.commonname===req.params.species){
+                        res.redirect(`/${frog.scientificsuborder}/${frog.scientificfamily}/${frog.scientificgenus}/${frog.scientificname}`)
+                    }
                 }
             }
         }
@@ -328,14 +527,6 @@ app.get('/:suborder/:family/:genus/:species', (req, res)=>{
     res.json([...frogInfo]);
 });
 
-/*
-    {scientificsuborder:"", commonsuborder:"",
-    scientificfamily:"", commonfamily:"",
-    scientificgenus:"", commongenus:"",
-    scientificname:"", commonname:"",
-    locale:"", size:"", iucn:""
-    },
-*/
 
 app.listen(port,()=>{
     console.log(`piss your pants and die on port${port}`)
