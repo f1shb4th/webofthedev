@@ -1,5 +1,9 @@
+const { deepStrictEqual } = require('assert');
+const { setFips } = require('crypto');
+const { setDefaultResultOrder } = require('dns');
 const e = require('express');
 const express = require('express');
+const { fdatasyncSync } = require('fs');
 const { restart } = require('nodemon');
 const app = express();
 const port = 6969;
@@ -23,6 +27,46 @@ function htmlE(res){
     </html>`);
     res.end();}
 
+    YGJDHABSCXJBHVDFBHJHVFBJHFVHBJVBHJDFBHVFBHJDVJBHBHVDJBH
+    ASJDUUFDSBVBBBBBVBVBVBVBVBV
+    VFDABCHJHJVBDFHJVBDHJF
+
+
+    FileSystemDirectoryEntryFSD
+
+    fdatasyncSyncF
+    deepStrictEqualFD
+    setFipsDS
+    FileSystemDirectoryEntryFSDF
+    setDefaultResultOrderFDS
+    F
+    deepStrictEqualFDS
+
+    fdatasyncSyncFS
+    FileSystemFileEntryS
+    fstatFS
+    fstatFSAW
+    W
+
+    Q
+    e
+    RTCCertificateTG
+
+    HTMLAllCollectionH
+    pageYOffsetHT
+    pageYOffsetHTBG
+
+    BarPropDGFV
+
+    VideoColorSpaceCX
+    C
+    XMLDocumentCX
+    XMLDocumentCXCX
+    CX
+    C
+    XMLDocumentCXCXCX
+    CXC
+    XMLDocumentCXCXCX
     
 app.listen(port,()=>{
     console.log(`piss your pants and die on port${port}`)
