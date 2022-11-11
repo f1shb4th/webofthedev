@@ -69,19 +69,25 @@ let game = {
     dealerHand:[]
 }
 
-function buildDeck(){
-    deck - [];
-    // add all cards
-}
+// function buildDeck(){
+//     deck - [];
+//     // add all cards
+// }
 
 function shuffleDeck(){
-    let tempDeck=[];
-    // deck -> tempdeck
-    deck - tempDeck;
+    let shuffledDeck=[];
+    for(let card of deck){
+        cNum = Math.floor(Math.random() * deck.length());
+        shuffledDeck.push(deck[cNum]);
+        deck.splice(cNum, 1);
+    };
+    return shuffledDeck;
 }
 
 function dealCard(deck,hand){
-    // one card from deck to hand
+    hand.push(deck[0]);
+    deck.shift();
+    return hand;
 }
 
 function restartGame(){
@@ -98,9 +104,10 @@ function restartGame(){
     console.log('look at me building and shuffling and dealing YAAAAA')
 }
 
-retartGame();
+restartGame();
 
-app.post('/hit',(req,res)=>{
+app.post('/hit',hand,(req,res)=>{
+    dealCard(deck,hand);
     res.json('hit');
 })
 
