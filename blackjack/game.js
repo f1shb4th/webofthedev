@@ -77,7 +77,7 @@ function buildDeck(){
 function shuffleDeck(){
     let tempDeck=[];
     // deck -> tempdeck
-    dick - tempDeck;
+    deck - tempDeck;
 }
 
 function dealCard(deck,hand){
