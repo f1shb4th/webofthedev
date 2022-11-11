@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>BLACKJACK</h1>
+    <h3>YOUR CARDS:</h3>
+    <script>
+        let top=" ___________";
+        let bottom="|___________|";
+        let zero="|           |";
+        let cardLayouts =[{oneL:"| ♠         |", oneM:"|     ♠     |", oneR:"|         ♠ |", two:"| ♠       ♠ |", three:"| ♠   ♠   ♠ |"},
+                          {oneL:"| ♥         |", oneM:"|     ♥     |", oneR:"|         ♥ |", two:"| ♥       ♥ |", three:"| ♥   ♥   ♥ |"},
+                          {oneL:"| ♦         |", oneM:"|     ♦     |", oneR:"|         ♦ |", two:"| ♦       ♦ |", three:"| ♦   ♦   ♦ |"},
+                          {oneL:"| ♣         |", oneM:"|     ♣     |", oneR:"|         ♣ |", two:"| ♣       ♣ |", three:"| ♣   ♣   ♣ |"},
+                          {aT:"| A         |", aB:"|         A |"
+                           qT:"| Q         |", qB:"|         Q |",
+                           kT:"| K         |", kB:"|         K |",
+                           jT:"| J         |", jB:"|         J |"},
+                        ];
+        let ace=[0,1,0,2,0,2];
+        let two=[0,1,0,0,0,3];
+        let three=[0,1,0,2,0,3];
+        let four=[];
+        let five=[];
+        let six=[];
+        let seven=[];
+        let eight=[];
+        let nine=[];
+        let ten=[];
+        let jack=[];
+        let queen=[];
+        let king=[];
+        let r1;
+        let r2;
+        let r3;
+        let r4;
+        let r5;
+        let r6;
+        let r7;
+        let r8;
+        for(let cards of playerHand){
+            // ace: top,zero,aT,zero,oneM,zero,aB,bottom
+            // 2: top,zero,oneL,zero,zero,zero,oneR,bottom
+            // 3: top,zero,oneL,zero,oneM,zero,oneR,bottom
+            // 4: top,zero,two,zero,zero,zero,two,bottom
+            // 5: top,zero,two,zero,oneM,zero,two,bottom
+            // 6: top,zero,two,zero,two,zero,two,bottom
+            // 7: top,zero,two,oneM,two,zero,two,bottom
+            // 8: top,zero,two,oneM,two,oneM,two,bottom
+            // 9: top,zero,three,zero,three,zero,three,bottom
+            // 10: top,zero,two,three,zero,three,two,bottom
+            // jack: top,zero,jT,zero,oneM,zero,jB,bottom
+            // queen: top,zero,qT,zero,oneM,zero,qB,bottom
+            // king: top,zero,kT,zero,oneM,zero,kB,bottom
+        }
+    </script>
+    <div>
+        <form method="post" action="/hit">
+            <input type="submit" value="HIT">
+        </form>
+        <form method="post" action="/stand">
+            <input type="submit" value="STAND">
+        </form>
+    </div>
+</body>
+</html>

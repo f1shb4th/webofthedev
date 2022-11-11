@@ -94,7 +94,7 @@ function handVal(hand){
     let val;
     let aceCount;
     for(let card of hand){
-        if(card.value=king||card.value=queen||card.value=jack){
+        if(card.value==="king"||card.value==="queen"||card.value==="jack"){
             val+=10;
         } if(card.value=ace){
             aceCount+=1;
