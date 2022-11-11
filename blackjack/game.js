@@ -76,7 +76,7 @@ let game = {
 
 function shuffleDeck(){
     let shuffledDeck=[];
-    for(let card of deck){
+    for (i in Range(52)){
         cNum = Math.floor(Math.random() * deck.length());
         shuffledDeck.push(deck[cNum]);
         deck.splice(cNum, 1);
@@ -90,6 +90,13 @@ function dealCard(deck,hand){
     return hand;
 }
 
+function handVal(hand){
+    let val;
+    for(let card of hand){
+        if(card=)
+    }
+}
+
 function restartGame(){
     buildDeck();
     shuffleDeck();
@@ -97,17 +104,17 @@ function restartGame(){
         playerHand:[],
         dealerHand:[]
     }
-    dealCard(deck,game.playerHand);
-    dealCard(deck,game.playerHand);
-    dealCard(deck,game.dealerHand);
-    dealCard(deck,game.dealerHand);
+    dealCard(shuffledDeck,game.playerHand);
+    dealCard(shuffledDeck,game.playerHand);
+    dealCard(shuffledDeck,game.dealerHand);
+    dealCard(shuffledDeck,game.dealerHand);
     console.log('look at me building and shuffling and dealing YAAAAA')
 }
 
 restartGame();
 
 app.post('/hit',hand,(req,res)=>{
-    dealCard(deck,hand);
+    dealCard(shuffledDeck,hand);
     res.json('hit');
 })
 
@@ -136,7 +143,6 @@ function htmlE(res){
     res.write(`</body>
     </html>`);
     res.end();}
-
     
 app.listen(port,()=>{
     console.log(`piss your pants and die on port${port}`)
