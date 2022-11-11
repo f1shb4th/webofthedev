@@ -67,7 +67,7 @@ let deck = [
 let game = {
     playerHand:[],
     dealerHand:[]
-}
+};
 
 // function buildDeck(){
 //     deck - [];
@@ -76,26 +76,43 @@ let game = {
 
 function shuffleDeck(){
     let shuffledDeck=[];
-    for (i in Range(52)){
+    for(let card of deck){
         cNum = Math.floor(Math.random() * deck.length());
         shuffledDeck.push(deck[cNum]);
         deck.splice(cNum, 1);
     };
     return shuffledDeck;
-}
+};
 
 function dealCard(deck,hand){
     hand.push(deck[0]);
     deck.shift();
     return hand;
-}
+};
 
 function handVal(hand){
     let val;
+    let aceCount;
     for(let card of hand){
-        if(card=)
-    }
-}
+        if(card.value=king||card.value=queen||card.value=jack){
+            val+=10;
+        } if(card.value=ace){
+            aceCount+=1;
+        } else{
+            val+=card.value;
+        };
+    };
+    for(i of aceCount){
+        if(val<=10){
+            val+=11;
+        } else{
+            val+=1;
+        };
+    };
+    if(val>21){
+        console.log('do something prob');
+    };
+};
 
 function restartGame(){
     buildDeck();
@@ -109,23 +126,23 @@ function restartGame(){
     dealCard(shuffledDeck,game.dealerHand);
     dealCard(shuffledDeck,game.dealerHand);
     console.log('look at me building and shuffling and dealing YAAAAA')
-}
+};
 
 restartGame();
 
 app.post('/hit',hand,(req,res)=>{
     dealCard(shuffledDeck,hand);
     res.json('hit');
-})
+});
 
 app.post('/stand',(req,res)=>{
     res.json('stand');
-})
+});
 
 app.post('/restart',(req,res)=>{
     restartGame();
     res.json('restart');
-})
+});
 
 function htmlS(res, pageName){
     res.write(`<!DOCTYPE html>
@@ -137,13 +154,13 @@ function htmlS(res, pageName){
         <title> ${pageName} </title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>`);}
+    <body>`);};
 
 function htmlE(res){
     res.write(`</body>
     </html>`);
-    res.end();}
+    res.end();};
     
 app.listen(port,()=>{
     console.log(`piss your pants and die on port${port}`)
-})
+});
