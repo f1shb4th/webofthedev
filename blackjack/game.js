@@ -68,7 +68,9 @@ let shuffledDeck = [];
 
 let game = {
     playerHand:[],
-    dealerHand:[]
+    dealerHand:[],
+    playerBust:false,
+    dealerBust:false,
 };
 
 // function buildDeck(){
@@ -94,25 +96,22 @@ function dealCard(deck,hand){
 
 function handVal(hand){
     let val;
-    let aceCount;
+    let aceCount=[];
     for(let card of hand){
         if(card.value==="king"||card.value==="queen"||card.value==="jack"){
             val+=10;
-        } if(card.value=ace){
-            aceCount+=1;
+        } if(card.value==="ace"){
+            aceCount=aceCount+"1";
         } else{
             val+=card.value;
         };
     };
-    for(i of aceCount){
+    for(val in aceCount){
         if(val<=10){
             val+=11;
         } else{
             val+=1;
         };
-    };
-    if(val>21){
-        console.log('do something prob');
     };
 };
 
@@ -120,7 +119,9 @@ function restartGame(){
     shuffledDeck = shuffleDeck();
     game = {
         playerHand:[],
-        dealerHand:[]
+        dealerHand:[],
+        playerBust:false,
+        dealerBust:false,
     }
     dealCard(shuffledDeck,game.playerHand);
     dealCard(shuffledDeck,game.playerHand);
@@ -133,10 +134,22 @@ restartGame();
 
 app.post('/hit',(req,res)=>{
     dealCard(shuffledDeck,game.playerHand);
+    pHandVal = handVal(game.playerHand);
+    if(pHandVal>21){
+        game.playerBust=true;
+    };
     res.json(game);
 });
 
 app.post('/stand',(req,res)=>{
+    dHandVal=handVal(game.dealerHand);
+    if(dHandVal>21){
+        game.dealerBust=true;
+    }else{
+        if(dHandVal<=21){
+            dealCard(shuffleDeck,game.dealerHand);
+        };
+    };
     res.json(game);
 });
 

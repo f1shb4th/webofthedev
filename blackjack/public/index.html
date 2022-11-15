@@ -37,47 +37,40 @@
             // queen: top,zero,qT,zero,oneM,zero,qB,bottom
             // king: top,zero,kT,zero,oneM,zero,kB,bottom
             // AJQK must have different function than rest because of the AJQK lines
-        let r1;
-        let r2;
-        let r3;
-        let r4;
-        let r5;
-        let r6;
-        let r7;
-        let r8;
-        // function face(card,r1,r2,r3,r4,r5,r6,r7,r8){
-        //     r1 = r1.concat(top);
-        //     r2 = r2.concat(top2);
-        //     r3 = r3.concat(cardLayouts[4][card.printval[0]]);
-        //     r4 = r4.concat(cardLayouts[1][0]);
+        let text = {r1:"", r2:"", r3:"", r4:"", r5:"", r6:"", r7:"", r8:""}
+        // function face(card,text){
+        //     text.r1 = text.r1.concat(top);
+        //     text.r2 = text.r2.concat(top2);
+        //     text.r3 = text.r3.concat(cardLayouts[4][card.printval[0]]);
+        //     text.r4 = text.r4.concat(cardLayouts[1][0]);
         //     if(card.value==="spade"){
-        //         r5 = r5.concat(cardLayouts[0][1]);
+        //         text.r5 = text.r5.concat(cardLayouts[0][1]);
         //     } if (card.value==="heart"){
-        //         r5 = r5.concat(cardLayouts[1][1]);
+        //         text.r5 = text.r5.concat(cardLayouts[1][1]);
         //     } if (card.value==="diamond"){
-        //         r5 = r5.concat(cardLayouts[2][1]);
+        //         text.r5 = text.r5.concat(cardLayouts[2][1]);
         //     } if (card.value==="club"){
-        //         r5 = r5.concat(cardLayouts[3][1]);
+        //         text.r5 = text.r5.concat(cardLayouts[3][1]);
         //     };
-        //     r6 = r6.concat(cardLayouts[1][0]);
-        //     r7 = r7.concat(cardLayouts[4][printval[4]]);
-        //     r8 = r8.concat(bottom);
+        //     text.r6 = text.r6.concat(cardLayouts[1][0]);
+        //     text.r7 = text.r7.concat(cardLayouts[4][printval[4]]);
+        //     text.r8 = text.r8.concat(bottom);
         // };
         // function other(card,r1,r2,r3,r4,r5,r6,r7,r8){
-        //     r1 = r1.concat(top);
-        //     r2 = r2.concat(top2);
+        //     text.r1 = text.r1.concat(top);
+        //     text.r2 = text.r2.concat(top2);
         //     for(val in card.printval){
         //         if(card.value==="spade"){
-        //         r5 = r5.concat(cardLayouts[0][card.printval[val]]);
+        //         text.r5 = text.r5.concat(cardLayouts[0][card.printval[val]]);
         //         } if (card.value==="heart"){
-        //         r5 = r5.concat(cardLayouts[1][card.printval[val]]);
+        //         text.r5 = text.r5.concat(cardLayouts[1][card.printval[val]]);
         //         } if (card.value==="diamond"){
-        //         r5 = r5.concat(cardLayouts[2][card.printval[val]]);
+        //         text.r5 = text.r5.concat(cardLayouts[2][card.printval[val]]);
         //         } if (card.value==="club"){
-        //         r5 = r5.concat(cardLayouts[3][card.printval[val]]);
+        //         text.r5 = text.r5.concat(cardLayouts[3][card.printval[val]]);
         //         };
         //     };
-        //     r8 = r8.concat(bottom);
+        //     text.r8 = text.r8.concat(bottom);
         // };
 
         // for(let cards of playerHand){
