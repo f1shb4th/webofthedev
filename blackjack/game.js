@@ -147,7 +147,7 @@ app.post('/stand',(req,res)=>{
         game.dealerBust=true;
     }else{
         if(dHandVal<=21){
-            dealCard(shuffleDeck,game.dealerHand);
+            dealCard(shuffledDeck,game.dealerHand);
         };
     };
     res.json(game);
