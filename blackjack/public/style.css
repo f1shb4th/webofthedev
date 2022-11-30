@@ -27,3 +27,11 @@ input[type=submit]{
     border-color: greenyellow;
     border-radius: 5px;
 }
+
+.card{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
