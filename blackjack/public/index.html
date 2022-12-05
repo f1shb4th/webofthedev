@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1>BLACKJACK</h1>
-    <h3>YOUR CARDS:</h3>
     <script>
         let top=" ___________";
         let top2="|           |";
@@ -82,9 +81,14 @@
         // }
     </script>
 
-    <div class="card">
-        <div>
-        <p><pre>
+<div class="cardBox">
+    <div>
+        <div class="cardText">
+            <h3>YOUR HAND</h3>
+        </div>
+        <div class="card">
+            <div>
+                <p><pre>
 ____________
 |           |
 | ♥       ♥ |
@@ -94,9 +98,9 @@ ____________
 | ♥       ♥ |
 |___________|
 </pre></p>
-        </div>
-        <div>
-        <p><pre>
+            </div>
+            <div>
+                <p><pre>
 ____________
 |           |
 | A         |
@@ -106,19 +110,51 @@ ____________
 |         A |
 |___________|
 </pre></p>
+            </div>
         </div>
     </div>
-
-    <div>
-        <form method="post" action="/hit">
-            <input type="submit" value="HIT">
-        </form>
-        <form method="post" action="/stand">
-            <input type="submit" value="STAND">
-        </form>
-        <form method="post" action="/restart">
-            <input type="submit" value="RESTART">
-        </form>
+    <div class="down">
+        <div>
+            <button onclick="hit()">HIT</button>
+        </div>
+        <div>
+            <button onclick="stand()">STAND</button>
+        </div>
+        <div>
+            <button onclick="reset()">RESET</button>
+        </div>
     </div>
+    <div>
+        <div class="cardText">
+            <h3>DEALER HAND</h3>
+        </div>
+        <div class="card">
+            <div>
+                <p><pre>
+____________
+|           |
+|           |
+|           |
+|           |
+|           |
+|           |
+|___________|
+</pre></p>
+            </div>
+            <div>
+                <p><pre>
+____________
+|           |
+|           |
+|           |
+|     ♣     |
+|           |
+|           |
+|___________|
+</pre></p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
