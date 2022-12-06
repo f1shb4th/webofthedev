@@ -6,111 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackjack</title>
     <link rel="stylesheet" href="style.css">
+    <script src="client.js" defer></script>
 </head>
 <body>
     <h1>BLACKJACK</h1>
-    <script>
-        let top=" ___________";
-        let top2="|           |";
-        let bottom="|___________|";
-        let cardLayouts =[{empty:"|           |", oneL:"| ♠         |", oneM:"|     ♠     |", oneR:"|         ♠ |", two:"| ♠       ♠ |", three:"| ♠   ♠   ♠ |"},
-                          {empty:"|           |", oneL:"| ♥         |", oneM:"|     ♥     |", oneR:"|         ♥ |", two:"| ♥       ♥ |", three:"| ♥   ♥   ♥ |"},
-                          {empty:"|           |", oneL:"| ♦         |", oneM:"|     ♦     |", oneR:"|         ♦ |", two:"| ♦       ♦ |", three:"| ♦   ♦   ♦ |"},
-                          {empty:"|           |", oneL:"| ♣         |", oneM:"|     ♣     |", oneR:"|         ♣ |", two:"| ♣       ♣ |", three:"| ♣   ♣   ♣ |"},
-                          {aT:"| A         |", aB:"|         A |",
-                           qT:"| Q         |", qB:"|         Q |",
-                           kT:"| K         |", kB:"|         K |",
-                           jT:"| J         |", jB:"|         J  |"}
-                        ];
-            // ace: top,zero,aT,zero,oneM,zero,aB,bottom
-            // 2: top,zero,oneL,zero,zero,zero,oneR,bottom
-            // 3: top,zero,oneL,zero,oneM,zero,oneR,bottom
-            // 4: top,zero,two,zero,zero,zero,two,bottom
-            // 5: top,zero,two,zero,oneM,zero,two,bottom
-            // 6: top,zero,two,zero,two,zero,two,bottom
-            // 7: top,zero,two,oneM,two,zero,two,bottom
-            // 8: top,zero,two,oneM,two,oneM,two,bottom
-            // 9: top,zero,three,zero,three,zero,three,bottom
-            // 10: top,zero,two,three,zero,three,two,bottom
-            // jack: top,zero,jT,zero,oneM,zero,jB,bottom
-            // queen: top,zero,qT,zero,oneM,zero,qB,bottom
-            // king: top,zero,kT,zero,oneM,zero,kB,bottom
-            // AJQK must have different function than rest because of the AJQK lines
-        let text = {r1:"", r2:"", r3:"", r4:"", r5:"", r6:"", r7:"", r8:""}
-        // function face(card,text){
-        //     text.r1 = text.r1.concat(top);
-        //     text.r2 = text.r2.concat(top2);
-        //     text.r3 = text.r3.concat(cardLayouts[4][card.printval[0]]);
-        //     text.r4 = text.r4.concat(cardLayouts[1][0]);
-        //     if(card.value==="spade"){
-        //         text.r5 = text.r5.concat(cardLayouts[0][1]);
-        //     } if (card.value==="heart"){
-        //         text.r5 = text.r5.concat(cardLayouts[1][1]);
-        //     } if (card.value==="diamond"){
-        //         text.r5 = text.r5.concat(cardLayouts[2][1]);
-        //     } if (card.value==="club"){
-        //         text.r5 = text.r5.concat(cardLayouts[3][1]);
-        //     };
-        //     text.r6 = text.r6.concat(cardLayouts[1][0]);
-        //     text.r7 = text.r7.concat(cardLayouts[4][printval[4]]);
-        //     text.r8 = text.r8.concat(bottom);
-        // };
-        // function other(card,r1,r2,r3,r4,r5,r6,r7,r8){
-        //     text.r1 = text.r1.concat(top);
-        //     text.r2 = text.r2.concat(top2);
-        //     for(val in card.printval){
-        //         if(card.value==="spade"){
-        //         text.r5 = text.r5.concat(cardLayouts[0][card.printval[val]]);
-        //         } if (card.value==="heart"){
-        //         text.r5 = text.r5.concat(cardLayouts[1][card.printval[val]]);
-        //         } if (card.value==="diamond"){
-        //         text.r5 = text.r5.concat(cardLayouts[2][card.printval[val]]);
-        //         } if (card.value==="club"){
-        //         text.r5 = text.r5.concat(cardLayouts[3][card.printval[val]]);
-        //         };
-        //     };
-        //     text.r8 = text.r8.concat(bottom);
-        // };
-
-        // for(let cards of playerHand){
-        //     if(cards.value==="king"||cards.value==="queen"||cards.value==="jack"||cards.value==="ace"){
-        //         face(cards,r1,r2,r3,r4,r5,r6,r7,r8);
-        //     } else{
-        //         other(cards,r1,r2,r3,r4,r5,r6,r7,r8);
-        //     }
-        // }
-    </script>
-
+<div class = 'cardText' id="textbox">
+</div>
 <div class="cardBox">
     <div>
         <div class="cardText">
             <h3>YOUR HAND</h3>
         </div>
-        <div class="card">
-            <div>
-                <p><pre>
-____________
-|           |
-| ♥       ♥ |
-| ♥   ♥   ♥ |
-|           |
-| ♥   ♥   ♥ |
-| ♥       ♥ |
-|___________|
-</pre></p>
-            </div>
-            <div>
-                <p><pre>
-____________
-|           |
-| A         |
-|           |
-|     ♠     |
-|           |
-|         A |
-|___________|
-</pre></p>
-            </div>
+        <div class="card" id="playerHand">
         </div>
     </div>
     <div class="down">
@@ -121,38 +28,14 @@ ____________
             <button onclick="stand()">STAND</button>
         </div>
         <div>
-            <button onclick="reset()">RESET</button>
+            <button onclick="restart()">RESET</button>
         </div>
     </div>
     <div>
         <div class="cardText">
             <h3>DEALER HAND</h3>
         </div>
-        <div class="card">
-            <div>
-                <p><pre>
-____________
-|           |
-|           |
-|           |
-|           |
-|           |
-|           |
-|___________|
-</pre></p>
-            </div>
-            <div>
-                <p><pre>
-____________
-|           |
-|           |
-|           |
-|     ♣     |
-|           |
-|           |
-|___________|
-</pre></p>
-            </div>
+        <div class="card" id="dealerHand">
         </div>
     </div>
 </div>
