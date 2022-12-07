@@ -34,6 +34,13 @@ function dealerhandbuilder(game,isStand){
     hand.replaceChildren(...dealerBuilt)
 };
 
+function gameMsg(game){
+    let text = document.querySelector('#textbox')
+    let msg = document.createElement('pre')
+    msg.textContent=game.gMsg;
+    text.replaceChildren(msg)
+}
+
 async function hit() {
     let game = await fetch('http://localhost:6969/hit', { method: 'POST' }).then(fRes => {
         return fRes.json();
@@ -41,6 +48,9 @@ async function hit() {
     console.log(game)
     playerhandbuilder(game);
     dealerhandbuilder(game,false);
+    if(game.playerBust === true){
+        gameMsg(game)
+    }
 };
 
 async function stand() {
@@ -50,6 +60,7 @@ async function stand() {
     console.log(game)
     playerhandbuilder(game)
     dealerhandbuilder(game,true);
+    gameMsg(game)
 };
 
 async function restart() {
