@@ -42,7 +42,7 @@ function gameMsg(game){
 }
 
 async function hit() {
-    let game = await fetch('http://localhost:6969/hit', { method: 'POST' }).then(fRes => {
+    let game = await fetch('/hit', { method: 'POST' }).then(fRes => {
         return fRes.json();
     });
     console.log(game)
@@ -54,7 +54,7 @@ async function hit() {
 };
 
 async function stand() {
-    let game = await fetch('http://localhost:6969/stand', { method: 'POST' }).then(fRes => {
+    let game = await fetch('/stand', { method: 'POST' }).then(fRes => {
         return fRes.json();
     });
     console.log(game)
@@ -64,7 +64,7 @@ async function stand() {
 };
 
 async function restart() {
-    let game = await fetch('http://localhost:6969/restart', { method: 'POST' }).then(fRes => {
+    let game = await fetch('/restart', { method: 'POST' }).then(fRes => {
         return fRes.json();
     });
     console.log(game)
